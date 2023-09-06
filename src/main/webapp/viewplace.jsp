@@ -1,4 +1,4 @@
-<%@page import="com.fssa.parkinplace.model.ParkingPlace"%>
+<%@page import="com.fssa.parkinplace.model.User"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -12,9 +12,6 @@
 <link rel="stylesheet" href="./viewplace.css">
 <title>Parkin</title>
 </head>
-
-
-
 <body>
 
 	<header>
@@ -33,27 +30,28 @@
 			<div class="main_list">
 
 				<%
-					List<ParkingPlace> list = (List<ParkingPlace>) request.getAttribute("parkingPlaceList");
+					List<User> list = (List<User>) request.getAttribute("parkingPlaceList");
+				    
 				
-				
+	
 				if(list != null){
 					for(int i=list.size()-1; i>=0; i-- ){
-						ParkingPlace ele = list.get(i);
+						User ele = list.get(i);
 				%>
 				
 				<div class="profile_box">
 					<div class="image">
-						<img id="imag" src="<%=ele.getPlacephotourl() %>" alt="<%= ele.getPlaceownername() %>">
+						<img id="imag" src="<%=ele.getPlacephotourl() %>" alt="<%= ele.getFirstName() %>">
 					</div>
 					<div class="detail">
 						<p id="nam">
-						<p>Name : <%=ele.getPlaceownername() %></p>
+						<p>Name : <%=ele.getFirstName() %></p>
 						</p>
 						<p id="addr">
 						<p>Address : <%=ele.getAddress() %></p>
 						</p>
 						<p id="phon">
-						<p>Phone number : <%=ele.getPhoneNumber() %></p>
+						<p>Phone number : <%=ele.getPhoneNum() %></p>
 						</p>
 					</div>
 				</div>
