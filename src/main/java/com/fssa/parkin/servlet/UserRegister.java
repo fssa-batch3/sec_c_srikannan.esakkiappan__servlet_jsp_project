@@ -2,6 +2,7 @@ package com.fssa.parkin.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,15 +49,33 @@ public class UserRegister extends HttpServlet {
         // Create a User object with the retrieved data
         User user = new User(name, address, email, phone, password, mapUrl, photoUrl);
 
+        RequestDispatcher rd = null;
+        
         try {
             // Call the UserService to add the user to the system
             UserService.addUser(user);
-
+            
+            request.setAttribute("success","User Added Successfully!");
+			
+            rd = request.getRequestDispatcher("/index.jsp");
+            
             // Redirect to the index.jsp page on successful registration
-            response.sendRedirect("index.jsp");
+           
         } catch (DAOException e) {
-            // If an exception occurs, display the error message
-            response.getWriter().append(e.getMessage());
+        	
+        	System.out.println(e.getMessage());
+        	
+        	request.setAttribute("error", e.getMessage());
+        	
+        	rd = request.getRequestDispatcher("/signup.jsp");
         }
+        finally {
+        	rd.forward(request, response);
+        }
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	doPost(req, resp);
     }
 }

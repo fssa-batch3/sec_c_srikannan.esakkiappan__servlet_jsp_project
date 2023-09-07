@@ -17,7 +17,38 @@
   <link rel="icon" href="../assets/images/Logo.png">
 </head>
 
+<link rel="stylesheet" href="assets/css/notify.css">
+<script
+	src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js">
+</script>
 <body>
+<%
+	String success = (String) request.getAttribute("success");
+	String error = (String) request.getAttribute("error");
+	%>
+
+
+	<%
+	if (error != null) {
+	%>
+	<script>
+		    let error = "<%=error%>";
+		    Notify.error(error);
+		</script>
+	<%
+	}
+	%>
+
+	<%
+	if (success != null) {
+	%>
+	<script>
+	    	let success = "<%=success%>";
+			Notify.success(success);
+		</script>
+	<%
+	}
+	%>
   <header>
     <!-- header -->
     <div class="header_logo">
@@ -44,7 +75,7 @@
           <label for="fname">First Name</label>
         </div>
         <div class="col-75">
-          <input type="text" id="fname" value="raj" name="name" placeholder="Your name.." >
+          <input type="text" id="fname" value="Ramkumar" required name="name" placeholder="Your name.." >
         </div>
       </div>
 
@@ -53,7 +84,7 @@
           <label for="email">Email</label>
         </div>
         <div class="col-75">
-          <input type="email" id="email" name="email" value="raj2002@gmail.com"
+          <input type="email" id="email" name="email" value="ram2002@gmail.com" placeholder="Your email.."
             pattern="^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
         </div>
       </div>
@@ -63,7 +94,7 @@
           <label for="name">Phone number</label>
         </div>
         <div class="col-75">
-          <input type="number" id="numb" value="9790850134" name="phone" pattern="[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}" >
+          <input type="number" id="numb" value="9321850134" required placeholder="Your phone number.." name="phone" pattern="[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}" >
         </div>
       </div>
 
@@ -72,7 +103,7 @@
           <label for="subject">Address</label>
         </div>
         <div class="col-75">
-          <textarea id="subject" value="raniyammalnagar" name="address" placeholder="Write address.."  style="height:50px">raniyammalnagar</textarea>
+          <textarea id="subject" value="raniyammalnagar" required name="address" placeholder="your home parking place address.."  style="height:50px">21,Sumangali school,Swaminathan Street,Guduvancheri</textarea>
         </div>
       </div>
 
@@ -81,7 +112,7 @@
           <label for="subject">Parking location</label>
         </div>
         <div class="col-75">
-          <textarea id="sub" name="mapUrl" value="https://maps.app.goo.gl/kJ7erasDKda9D8LYA" placeholder="location link"  style="height:40px">https://maps.app.goo.gl/kJ7erasDKda9D8LYA</textarea>
+          <textarea id="sub" name="mapUrl" required value="https://maps.app.goo.gl/kJ7erasDKda9D8LYA" placeholder="location link"  style="height:40px">https://maps.app.goo.gl/orndAzptj1YPPHwf6</textarea>
         </div>
       </div>
 
@@ -90,7 +121,7 @@
           <label for="name">Password</label>
         </div>
         <div class="col-75">
-          <input type="password" id="pass" value="Raj@2002" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" >
+          <input type="password" id="pass" value="Ram@2002" required name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" >
         </div>
       </div>
 
@@ -99,15 +130,12 @@
           <label for="name">Land Image</label>
         </div>
         <div class="col-75">
-          <input type="url" id="land_img" name="photoUrl" value="https://iili.io/HUN8VHX.jpg" accept="image/jpeg, image/png, image/jpg"><br>
-          <small id="land_image">Land_img_url...</small>
-          <a class="uplod" id="land_prev">Preview</a>
+          <input type="url" id="land_img" name="photoUrl" required value="https://iili.io/J9lZkZv.jpg" accept="image/jpeg, image/png, image/jpg"><br>
+          
+  
         </div>
       </div>
       
-      <div id="display_image">
-
-      </div>
 
       <div class="row">
 
