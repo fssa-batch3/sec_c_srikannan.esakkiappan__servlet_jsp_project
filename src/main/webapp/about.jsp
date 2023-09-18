@@ -1,0 +1,79 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable = no">
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/about.css">
+    <link rel="icon" href="assets/images/Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <title>Parkin</title>
+</head>
+<body>
+    <header>
+        <!-- header -->
+        <div class="header_logo">
+            <img id="head_logo" src="assets/images/lgo.png" alt="logo">
+        </div>
+        
+        <nav id="nav">
+            <!-- Navigation links -->
+            <a href="index.jsp">Home</a>
+            <a href="leaser-log.jsp">Leaser</a>
+            <a href="Tenant-log.jsp">Tenant</a>
+            <a href="about.jsp">About</a>
+        </nav>
+        <div class="respons_nav">
+            <i class="fa-solid fa-bars" id="bttn"></i>
+            <div class="menu-list">
+              <a href="index.jsp">Home</a>
+              <a href="leaser-log.jsp">Leaser</a>
+              <a href="Tenant-log.jsp">Tenant</a>
+              <a href="about.jsp">About</a>
+            </div>
+          </div>
+    </header>
+    <main>
+        <!-- main -->
+        <h1>About us</h1><br>
+        <h2>Chennai is the third largest fleet of two-wheelers in the country after New Delhi and Bangalore.
+            Each house should have one bike. Some houses have more than one bike.
+            Very few people have a parking space at their home.
+            Some people park in their company's parking garage. So many people park their bikes on public roads..
+            Some people are parking in front of their house, someone is parking in front of shops etc.
+            These types of parking create so many problems for the public as well as bike owners.
+            It creates street congestion, reduces road space to make traffic more congested, and bikes have a theft problem.
+            Parkin is an idea that helps to connect the two peoples, 
+            the one who had a bike and another one who had a parking place in their home. 
+            It helps to reduce the street congestion and also reduce bike theft.   
+            </h2>
+    </main>
+</body>
+<footer>
+    <div id="foot">
+        <div id="park">
+        <img id="flogo" src="assets/images/lgo.png" alt="logo">
+        <p>Parkin is an website that helps<br> to connect both Tenant and Leaser</p>
+        </div>
+        <div id="contact">
+            <h2>Get in touch</h2>
+            <img id="flt" src="assets/images/lt.png" alt="symbol">
+            <div id="ct">
+            <h5 id="fc">Taramani,chennai</h5><br>
+            <h5 id="ftc">parkinn2023.sri@gmail.com</h5>
+            </div>
+        </div>
+        <div id="ftnav"><br>
+            <a href="index.jsp">Home</a><br>
+            <a href="leaser-log.jsp">Leaser</a><br>
+            <a href="Tenant-log.jsp">Tenant</a><br>
+            <a href="about.jsp">About</a><br>
+        </div>
+    </div>
+</footer>
+</html>

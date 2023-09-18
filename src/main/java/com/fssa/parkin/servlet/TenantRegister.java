@@ -14,27 +14,23 @@ import com.fssa.parkinplace.model.User;
 import com.fssa.parkinplace.service.UserService;
 
 /**
- * Servlet implementation class UserRegister
+ * Servlet implementation class TenantRegister
  */
-@WebServlet("/UserRegister")
-public class UserRegister extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
+@WebServlet("/TenantRegister")
+public class TenantRegister extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
     /**
-     * Default constructor.
+     * @see HttpServlet#HttpServlet()
      */
-    public UserRegister() {
+    public TenantRegister() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
-    /**
-     * Handles the HTTP POST request for user registration.
-     *
-     * @param request  The HTTP request object.
-     * @param response The HTTP response object.
-     * @throws ServletException If there is a servlet-related problem.
-     * @throws IOException      If there is an I/O problem.
-     */
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // Retrieve user input from the form
@@ -43,22 +39,21 @@ public class UserRegister extends HttpServlet {
         String phone = request.getParameter("phone");
         String password = request.getParameter("password");
         String address = request.getParameter("address");
-        String mapUrl = request.getParameter("mapUrl");
-        String photoUrl = request.getParameter("photoUrl");
+        String bikePhotoUrl = request.getParameter("photoUrl");
 
         // Create a User object with the retrieved data
-        User user = new User(name, address, email, phone, password, mapUrl, photoUrl);
+        User user = new User(name, address, email, phone, password, bikePhotoUrl);
 
         RequestDispatcher rd = null;
         
         try {
             // Call the UserService to add the user to the system
-            UserService.addUser(user);
+            UserService.addTenant(user);
             
-            request.setAttribute("success","User Added Successfully!");
+            request.setAttribute("success","Tenant Added Successfully!");
 			
          // Redirect to the index.jsp page on successful registration
-            rd = request.getRequestDispatcher("leaser-log.jsp");  
+            rd = request.getRequestDispatcher("Tenant-log.jsp");  
            
         } catch (DAOException e) {
         	
@@ -66,7 +61,7 @@ public class UserRegister extends HttpServlet {
         	
         	request.setAttribute("error", e.getMessage());
         	
-        	rd = request.getRequestDispatcher("/signup.jsp");
+        	rd = request.getRequestDispatcher("/Tenant-signup.jsp");
         }
         finally {
         	rd.forward(request, response);
@@ -78,3 +73,4 @@ public class UserRegister extends HttpServlet {
     	doPost(req, resp);
     }
 }
+

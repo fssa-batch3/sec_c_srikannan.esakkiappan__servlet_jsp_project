@@ -31,8 +31,7 @@
 
 				<%
 					List<User> list = (List<User>) request.getAttribute("parkingPlaceList");
-				    
-				
+				    		
 	
 				if(list != null){
 					for(int i=list.size()-1; i>=0; i-- ){
@@ -65,7 +64,6 @@
 				}
 				%>
 				
-
 			</div>
 		</div>
 
@@ -159,8 +157,6 @@
         function deg2rad(deg) {
             return deg * (Math.PI / 180)
         }
-
-
 
     </script>
 </body>

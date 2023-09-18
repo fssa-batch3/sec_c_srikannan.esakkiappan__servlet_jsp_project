@@ -14,7 +14,7 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Parkin</title>
-  <link rel="icon" href="../assets/images/Logo.png">
+  <link rel="icon" href="assets/images/Logo.png">
 </head>
 
 <link rel="stylesheet" href="assets/css/notify.css">
@@ -34,7 +34,7 @@
 	<script>
 		    let error = "<%=error%>";
 		    Notify.error(error);
-		</script>
+	</script>
 	<%
 	}
 	%>
@@ -45,7 +45,7 @@
 	<script>
 	    	let success = "<%=success%>";
 			Notify.success(success);
-		</script>
+	</script>
 	<%
 	}
 	%>
@@ -54,6 +54,14 @@
     <div class="header_logo">
       <img id="head_logo" src="https://iili.io/HyP0C8b.png" alt="logo">
     </div>
+    
+    <nav id="nav">
+        <!-- Navigation links -->
+        <a href="index.jsp">Home</a>
+        <a href="leaser-log.jsp">Leaser</a>
+        <a href="Tenant-log.jsp">Tenant</a>
+        <a href="about.jsp">About</a>
+    </nav>
     
     <div class="respons_nav">
       <i class="fa-solid fa-bars" id="btttn"></i>
@@ -72,7 +80,7 @@
     <form method="post" action="UserRegister">
       <div class="row">
         <div class="col-25">
-          <label for="fname">First Name</label>
+          <label for="fname">Name</label>
         </div>
         <div class="col-75">
           <input type="text" id="fname" value="Ramkumar" required name="name" placeholder="Your name.." >
@@ -143,5 +151,59 @@
       </div>
 
     </form>
+    
+     <script>
+      let form = document.querySelector("form")
+      form.addEventListener("submit", e => {
+        e.preventDefault()
+
+        const firstname = document.getElementById("fname").value.trim()
+        const lastname = document.getElementById("lname").value.trim()
+        const email = document.getElementById("email").value.trim()
+        const number1 = document.getElementById("numb").value.trim()
+        const number2 = document.getElementById("number").value.trim()
+        const address = document.getElementById("subject").value.trim()
+        const location = document.getElementById("sub").value;
+        const password1 = document.getElementById("pass").value.trim()
+        const password2 = document.getElementById("password").value.trim()
+
+
+
+        if (password1 != password2) {
+          alert("Oops !! password and confirm password doesn't match.")
+        }
+        else {
+          let leaser = JSON.parse(localStorage.getItem("leaser")) ?? [];
+          let j = 0;
+          for (let i = 0; i < leaser.length; i++) {
+            if (leaser[i]["email"] === email) {
+              j = 1;
+              break;
+            }
+          }
+          if (j == 1) {
+            alert("email already registered")
+          }
+          else {
+
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            else {
+              alert("Geolocation is not supported by this browser.")
+            }
+            function showPosition(position) {
+
+              let lattitude = position.coords.latitude
+              let longitude = position.coords.longitude
+              console.log(lattitude, longitude); // 13.0963045  80.2865916
+              leaser.push(user_data)
+              localStorage.setItem("leaser", JSON.stringify(leaser))
+              window.location.href = "leaser-log.jsp" 
+            }
+          }
+        }
+      })
+	</script>
 </body>
 </html>
