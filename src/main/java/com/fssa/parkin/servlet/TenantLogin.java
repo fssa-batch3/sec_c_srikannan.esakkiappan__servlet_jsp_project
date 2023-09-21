@@ -50,6 +50,8 @@ public class TenantLogin extends HttpServlet {
 
 			if (user != null) {
 				HttpSession session = request.getSession();
+				
+				session.setMaxInactiveInterval(1800);
 
 				session.setAttribute("currenttenant", user);
 

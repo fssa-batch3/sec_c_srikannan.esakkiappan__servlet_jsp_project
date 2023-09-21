@@ -50,12 +50,13 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		UserService userService=new UserService(new UserDao(),new UserValidator());
 		try {
 			userService.updateTenant(user);
-			Logger.info("User details is updated sucessfully");
+			
 			User user1 = userService.getTenantByEmail(user.getEmail());
 			
 			HttpSession session = request.getSession();
 			request.setAttribute("successMsg", "Profile updated successfully");
 			session.setAttribute("currenttenant", user1);
+			Logger.info("User details is updated sucessfully");
 			
 		} catch (DAOException | UserException e) {
 			Logger.info("User details is updation failed");

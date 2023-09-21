@@ -44,7 +44,7 @@ public class ListPlace extends HttpServlet {
 
         try {
             // Retrieve a list of parking places from the UserService.
-            List<User> parkingPlaceList = placeservice.readUser();
+            List<User> parkingPlaceList = UserService.readUser();
             System.out.println(parkingPlaceList);
 
             // Set the parkingPlaceList as an attribute in the request.

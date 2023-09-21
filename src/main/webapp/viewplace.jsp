@@ -22,6 +22,7 @@
 		<nav id="nav">
 			<input id="search" type="search"
 				placeholder=" Use your location to search">
+				<button id="locat">Near by</button>
 		</nav>
 
 	</header>
@@ -37,7 +38,7 @@
 					for(int i=list.size()-1; i>=0; i-- ){
 						User ele = list.get(i);
 				%>
-				
+				<a href="<%=request.getContextPath() %>/tenant-chooseduration.jsp?tenantemail=<%=ele.getEmail() %>">
 				<div class="profile_box">
 					<div class="image">
 						<img id="imag" src="<%=ele.getPlacephotourl() %>" alt="<%= ele.getFirstName() %>">
@@ -54,7 +55,7 @@
 						</p>
 					</div>
 				</div>
-				
+				</a>
 				<%	
 					}
 				}else{
@@ -95,68 +96,11 @@
 
             });
 
-
         })
+        
+        
 
-        const locat = document.getElementById("locat")
-        locat.addEventListener("click", function () {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                alert("Geolocation is not supported by this browser.")
-            }
-            function showPosition(position) {
-
-                let latitud = position.coords.latitude
-                let longitud = position.coords.longitude
-                console.log(latitud, longitud); // 13.0963045  80.2865916
-
-                let near="";
-                for (let s = 0; s < lease.length; s++) {
-                    let lat2 = lease[s]["Lattitude"];
-                    let lon2 = lease[s]["Longitude"];
-
-                    const distan_km = distance(latitud, longitud, lat2, lon2);
-                    console.log(distan_km);
-
-                    if (distan_km <= 1) {
-                        console.log(lease[s]);
-                        near += `<a id="link" href="tenant-chooseduration.html?name=${lease[s]["firstname"]}">
-                            <div class="profile_box">
-                              <div class="image">
-                                <img id="imag" src="${lease[s]["upload_image"]}">
-                              </div>
-                             <div class="detail">
-                                <p>Name : ${lease[s]["firstname"]}</p>
-                                <p>Address : ${lease[s]["address"]}</p>
-                                <p>Phone number : ${lease[s]["phone_number"]}</p>
-                             </div>
-                            </div>
-                                </a>`
-                        main_lists.innerHTML = near;
-                        console.log("sucess");
-                    }
-                }
-            }
-        })
-
-        function distance(lat1, lon1, lat2, lon2) {
-            const R = 6371; // radius of the earth in km
-            const dLat = deg2rad(lat2 - lat1);
-            const dLon = deg2rad(lon2 - lon1);
-            const a =
-                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-                Math.sin(dLon / 2) * Math.sin(dLon / 2);
-            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            const d = R * c; // distance in km
-            return d;
-            
-        }
-
-        function deg2rad(deg) {
-            return deg * (Math.PI / 180)
-        }
+       
 
     </script>
 </body>

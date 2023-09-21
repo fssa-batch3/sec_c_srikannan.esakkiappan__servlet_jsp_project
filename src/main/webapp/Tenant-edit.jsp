@@ -26,8 +26,7 @@
     <nav id="nav">
 
       <!-- Navigation links -->
-      <a href="tenant-profile.jsp" id="save">Save</a>
-      <a href="tenant-log.jsp" id="del">Delete</a>
+      
       <a href="index.jsp">Log out</a>
 
     </nav>

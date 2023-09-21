@@ -21,7 +21,8 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 500px;
-    margin-right: 80px;
+    margin-top: -4%;
+    margin-left: 60%;
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 2px;
 }
@@ -30,6 +31,7 @@ header {
     text-decoration: none;
     color: white;
     padding: 6px 15px;
+    cursor: pointer;
 }
 #nav a:hover {
     background-color: #0182ff;
@@ -52,9 +54,10 @@ header {
 main{
     margin-top: 200px;
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    width: 1400px;
+    width: 1800px;
 }
 .images{
     display: flex;
@@ -63,47 +66,62 @@ main{
     margin-left: 100px;
 }
 #heading{
-    font-size: 35px;
-    text-align: center;
-    margin-bottom: 40px;
+    font-size: 33px;
+    /* text-align: center; */
+    margin-left: 8%;
+    margin-top: 6%;
+    color: black;
 }
 #parking-image1{
-    margin-left: 50%;
+ 
+    margin-bottom: 20%;
+}
+.imag{
+    margin-top: 6%;
+    margin-left: 4%;
 }
 .leaser_detail{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    width: 300px;
-    height: 670px;
-    padding-right: 300px;
-    margin-bottom: 1px;
-    margin-left: 223px;
+    height: 650px;
+    margin-bottom: 100px;
+    margin-left: 60%;
+    margin-top: -33%;
     border-top-left-radius: 60px;
     border: 3px solid #0182ff;
     background-color: #f2f2f2;
+    color: black;
 }
 #name-number{
-    font-size: 26px;
+    font-size: 22px;
     margin-left: 60px;
-    margin-top: -50%;
+    margin-top: -37%;
 }
 form{
     margin-left: 60px;
     margin-top: 10%;
 }
+#request-btn{
+    margin-top: 50%;
+    margin-left: 83%;
+}
+#amount{
+    width: 180%;
+    margin-top: -15%;
+}
 button#ques{
     /* position: absolute;
     bottom: 16.9%;
     right: 30.9%; */
-    width: 40%;
+    width: 50%;
     margin-left: 20%;
-    margin-top: -50%;
-    font-weight: 900;
+    margin-top: -70%;
+    font-weight: 700;
 }
 .money{
-    margin-left: 65%;
+    margin-left: 85%;
     margin-top: -10%;
     transform: scale(1.6);
 }
@@ -165,13 +183,17 @@ button:hover{
     margin-left: -10%;
 }
 h5#ftc{
-    float: right;
+    /* float: right; */
     margin-top: -29%;
-    margin-left: -50%;
+    margin-left: 40%;
 }
 h5#fc{
     float:right;
     margin-top: -47%;
+}
+#ftnav a{
+    color: white;
+    text-decoration: none;
 }
 #ftnav{
     display: flex;
@@ -184,15 +206,15 @@ h5#fc{
 }
 
 
-
 @media only screen and (max-width: 800px){
     header{
         width: 100%;
         height: 27%;
+        z-index: 3;
     }
     #head_logo{
         transform: scale(1.1);
-        margin-top: 28%;
+        margin-top: 20%;
         margin-left: 10%;
     }
     #nav{
@@ -200,9 +222,10 @@ h5#fc{
     }
     #bttn{
         position: relative;
-        top: 30%;
-        left: 180%;
+        /* top: -190%; */
+        left: 85%;
         color: white;
+        /* z-index: 5; */
     }
     .respons_nav{
         display: block;
@@ -210,7 +233,8 @@ h5#fc{
         font-size: 24px;
         z-index: 5;
         color: white;
-        margin-right: 60px;
+        margin-right: 10px;
+        margin-top: -35%;
         position: relative;
     }
     .respons_nav:hover .menu-list{
@@ -221,7 +245,7 @@ h5#fc{
         text-decoration: none;
         color: white;
         font-size: 20px;
-        margin: 10px 0 10px 10px;
+        margin: 10px 0px 10px 10px;
         font-weight: 100;
         font-family: 'Source Sans Pro', sans-serif;
     }
@@ -231,39 +255,53 @@ h5#fc{
     .menu-list{
         visibility: hidden;
         position: absolute;
-        top: 30px;
-        right: 0px;
+        top: 10px;
+        right: 70px;
         width: 100px;
-        height: 75%;
+        height: 315%;
         /* background-color: skyblue;  */
         border-radius: 5px;
         box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.5);
     }
-
+    #heading{
+        width: 240%;
+    }
+    #parking_image1{
+        margin-left: -7%;
+    }
     .images{
         transform: scale(.8);
-        margin-left: 376%;
+        margin-left: 5%;
         margin-top: 66%;
     }
     .leaser_detail{
-        transform: scale(.6);
-        margin-left: 370%;
+        transform: scale(.7);
+        margin-left: -30%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
+        width: 285%;
     }
     main{
         display: flex;
         flex-direction: column;
-        width: 21%;
+        width: 45%;
     }
     .money{
         width: 25%;
-        margin-left: 75%;
+        margin-left: 90%;
+    }
+    #amount{
+        margin-top: -40%;
+    }
+    #request-btn{
+        margin-left: 130%;
+        color: white;
     }
     #ques{
         margin-left: 1%;
+        color: white;
     }
     button{
         transform: scale(1);
@@ -274,13 +312,16 @@ h5#fc{
         display: none;
     }
     #foot{
-        width: 94%;
+        width: 100%;
         display: flex;
         height: 200%;
     }
     #contact,#fc,#ftc{
         transform: scale(1);
         margin-left: 1%;
+    }
+    #flt{
+        margin-left: -20%;
     }
     #park{
         display: none;

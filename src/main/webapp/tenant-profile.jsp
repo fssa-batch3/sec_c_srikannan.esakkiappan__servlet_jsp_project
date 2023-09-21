@@ -25,7 +25,7 @@
         <!-- <a id="h" href="#">Home</a> -->
         <nav id="nav">
             <!-- Navigation links -->
-            <a href="tenant-choose-place.jsp">Parking places</a>
+            <a href="/parkinapp-web/ListPlace">Parking places</a>
             <a href="Tenant-edit.jsp" id="edi">Edit profile</a>
             <a href="tenant-payment.jsp">Payment</a>
             <a href="index.jsp">Log out</a>
@@ -63,7 +63,7 @@
         </div>
         <!-- <div id="bike-img"> -->
             
-            <div id="bike1"><img id="plac_img" src="<%=imgurl %>" alt="<%= displayName %>" height=500px width=350px></div>
+            <div id="bike1"><img id="plac_img" src="<%= imgurl %>" alt="<%= displayName %>" height=500px width=350px></div>
            <img id="bik1" src="assets/Images/defa.jpg" alt="upload_bike_template">
         <!-- </div> -->
     </main>

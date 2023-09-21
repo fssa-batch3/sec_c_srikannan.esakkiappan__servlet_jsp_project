@@ -44,7 +44,7 @@ public class TenantRegister extends HttpServlet {
         // Create a User object with the retrieved data
         User user = new User(name, address, email, phone, password, bikePhotoUrl);
 
-        RequestDispatcher rd = null;
+        RequestDispatcher rd = request.getRequestDispatcher("error.jsp");
         
         try {
             // Call the UserService to add the user to the system

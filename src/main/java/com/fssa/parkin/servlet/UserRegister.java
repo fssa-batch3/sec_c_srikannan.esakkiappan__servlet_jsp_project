@@ -45,11 +45,14 @@ public class UserRegister extends HttpServlet {
         String address = request.getParameter("address");
         String mapUrl = request.getParameter("mapUrl");
         String photoUrl = request.getParameter("photoUrl");
+        double latitude = Double.parseDouble(request.getParameter("latitude"));
+        double longitude = Double.parseDouble(request.getParameter("longitude"));
+        
 
         // Create a User object with the retrieved data
-        User user = new User(name, address, email, phone, password, mapUrl, photoUrl);
+        User user = new User(name, address, email, phone, password, mapUrl, photoUrl, latitude, longitude);
 
-        RequestDispatcher rd = null;
+//        RequestDispatcher rd = request.getRequestDispatcher("error.jsp");
         
         try {
             // Call the UserService to add the user to the system
@@ -58,19 +61,17 @@ public class UserRegister extends HttpServlet {
             request.setAttribute("success","User Added Successfully!");
 			
          // Redirect to the index.jsp page on successful registration
-            rd = request.getRequestDispatcher("leaser-log.jsp");  
-           
+            response.sendRedirect("leaser-log.jsp");  
+            
         } catch (DAOException e) {
         	
         	System.out.println(e.getMessage());
         	
         	request.setAttribute("error", e.getMessage());
         	
-        	rd = request.getRequestDispatcher("/signup.jsp");
-        }
-        finally {
-        	rd.forward(request, response);
-        }
+        	response.sendRedirect("signup.jsp");
+        }	
+        
     }
     
     @Override
