@@ -1,0 +1,76 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable = no">
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/tenant-request.css">
+    <link rel="icon" href="assets/images/Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+       
+    <title>parkin</title>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <!-- header -->
+        <div class="header_logo">
+            <img id="head_logo" src="assets/images/lgo.png" alt="logo">
+        </div>
+        <nav id="nav">
+            <!-- Navigation links -->
+            <a class="Anot_req">Give another request</a>
+            <a href="index.jsp">Log out</a>
+        </nav>
+        <div class="respons_nav">
+            <i class="fa-solid fa-bars" id="bttn"></i>
+            <div class="menu-list">
+            <a class="Anot_req">Give new request</a>
+            <a href="index.jsp">Log out</a>
+            </div>
+          </div>
+    </header>
+    <!-- main -->
+    <main>
+        <div class="request">
+            <img id="tick" src="assets/images/tick.png" alt="tick">
+            <h1>Request have sent sucessfully</h1>
+            <h3 id="lap">(please wait for few minutes, you will get notify once request accepted)</h3>
+            <h3 id="respon">( Wait for few minutes you will get notify )</h3>
+        </div>
+    </main>
+    <!-- footer -->
+    <footer>
+        <div id="foot">
+            <div id="park">
+            <img id="flogo" src="assets/images/lgo.png" alt="logo">
+            <p>Parkin is an website that helps<br> to connect both Tenant and Leaser</p>
+            </div>
+            <div id="contact">
+                <h2>Get in touch</h2>
+                <img id="flt" src="assets/images/lt.png" alt="symbol">
+                <div id="ct">
+                <h5 id="fc">Taramani,chennai</h5><br>
+                <h5 id="ftc">parkinn2023.sri@gmail.com</h5>
+                </div>
+            </div>
+            <div id="ftnav"><br>
+                <a href="index.jsp">Home</a><br>
+                <a href="leaser-log.jsp">Leaser</a><br>
+                <a href="Tenant-log.jsp">Tenant</a><br>
+                <a href="about.jsp">About</a><br>
+            </div>
+        </div>
+        <div id="blk">
+        </div>
+    </footer>
+</body>
+
+
+
+</html>

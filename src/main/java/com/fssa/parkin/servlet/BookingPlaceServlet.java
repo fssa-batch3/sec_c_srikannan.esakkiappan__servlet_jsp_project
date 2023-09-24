@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.fssa.parkinplace.model.BookingPlace;
+import com.fssa.parkinplace.exception.BookingException;
 import com.fssa.parkinplace.exception.DAOException;
+import com.fssa.parkinplace.exception.UserException;
 import com.fssa.parkinplace.model.User;
 import com.fssa.parkinplace.service.BookingPlaceService;
 
@@ -33,9 +35,14 @@ public class BookingPlaceServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		User currenttenant = (User) session.getAttribute("currenttenant");
 
-		String leaserEmail = (String) request.getParameter("leaseremail");
+		String leaserIdString = request.getParameter("leaserid");
+		
+		int leaserId = Integer.parseInt(leaserIdString);
 		String tenantEmail = currenttenant.getEmail();
-		System.out.println(leaserEmail);
+		String tenantName = currenttenant.getFirstName();
+		String tenantPhone = currenttenant.getPhoneNum();
+		String tenantBikeImg = currenttenant.getBikephotourl();
+
 		System.out.println(tenantEmail);
 
 		// TODO: tenant-chooseduration.jsp la string ah varum athu respective data type
@@ -55,16 +62,17 @@ public class BookingPlaceServlet extends HttpServlet {
 		double amount = Double.parseDouble(request.getParameter("parkingcharge"));
 		String status = "Waiting List"; // Replace with your desired status
 
-		BookingPlace bookingplace = new BookingPlace(leaserEmail, tenantEmail, startingPeriod, endingPeriod, amount, status);
+		BookingPlace bookingplace = new BookingPlace(tenantName, tenantPhone, leaserId, tenantBikeImg, tenantEmail, startingPeriod, endingPeriod, amount, status);
 		
-
 		try {
 			
 			BookingPlaceService.createBookingPlace(bookingplace);
 			
 			request.setAttribute("success","User Added Successfully!");
 			
-		} catch (DAOException e) {
+			response.sendRedirect("tenant-request.jsp");
+			
+		} catch (DAOException | BookingException | UserException e) {
 			System.out.println(e.getMessage());
 			
 			request.setAttribute("error", e.getMessage());

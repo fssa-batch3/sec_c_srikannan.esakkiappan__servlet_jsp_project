@@ -37,13 +37,15 @@ public class GetLeaserByEmail extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 System.out.println("called");
-		String email = request.getParameter("tenantemail");
-		System.out.println(email+"datas");
+		String leaserIdString = request.getParameter("leaserid");
+		System.out.println(leaserIdString+"jsdgf");
+		int leaserId = Integer.parseInt(leaserIdString);
+		System.out.println(leaserId+"datas");
 		PrintWriter out = response.getWriter();
 		UserService userService = new UserService();
 		User user = new User();
 		try {
-			user = userService.getUserByEmail(email);
+			user = UserService.getUserById(leaserId);
 			JSONObject userObj = new JSONObject(user);
 			out.print(userObj.toString());
 			System.out.println(userObj.toString());

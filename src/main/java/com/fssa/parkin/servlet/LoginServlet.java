@@ -17,6 +17,7 @@ import com.fssa.parkinplace.exception.UserException;
 import com.fssa.parkinplace.model.User;
 import com.fssa.parkinplace.service.UserService;
 import com.fssa.parkinplace.validation.UserValidator;
+import com.fssa.util.EncryptPassword.Password;
 
 /**
  * Servlet implementation class LoginServlet
@@ -39,16 +40,22 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		String pass = request.getParameter("password");
+		
+		System.out.println(pass);
+		String hashPassword = Password.encryptPassword(pass);
+		System.out.println(hashPassword);
 
-		Logger.info("email :" + email + "///" + " Password :" + password);
+		Logger.info("email :" + email + "///" + " Password :" + pass);
+		
 		User user;
 		UserService userService = new UserService(new UserDao(), new UserValidator());
 		RequestDispatcher rd;
 		try {
-			user = userService.login(email, password);
-
-			if (user != null) {
+			
+			user = userService.login(email);
+			
+			if (user != null) { 
 				HttpSession session = request.getSession();
 
 				session.setAttribute("currentuser", user);

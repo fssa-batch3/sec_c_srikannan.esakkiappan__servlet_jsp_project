@@ -25,33 +25,7 @@
 	src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js">
 </script>
 <body>
-	<%
-	String success = (String) request.getAttribute("success");
-	String error = (String) request.getAttribute("error");
-	%>
-
-
-	<%
-	if (error != null) {
-	%>
-	<script>
-		    let error = "<%=error%>";
-		    Notify.error(error);
-	</script>
-	<%
-	}
-	%>
-
-	<%
-	if (success != null) {
-	%>
-	<script>
-	    	let success = "<%=success%>";
-			Notify.success(success);
-	</script>
-	<%
-	}
-	%>
+	 
 	<header>
 		<!-- header -->
 		<div class="header_logo">
@@ -72,8 +46,36 @@
 					out</a>
 			</div>
 		</div>
-
 	</header>
+	
+	<%
+	String success = (String) request.getAttribute("success");
+	String error = (String) request.getAttribute("error");
+	
+	%>
+
+	<%
+	if (error != null) {
+	%>
+	<script>
+	    let error = "<%=error%>";
+	    Notify.error(error);
+	</script>
+	<%
+	}
+	%>
+
+	<%
+	if (success != null) {
+	%>
+	<script>
+	    	let success = "<%=success%>";
+			Notify.success(success);
+	</script>
+	<%
+	}
+	%>
+	
 	<div id="hed">
 		<h2>Leaser Signup</h2>
 	</div>
@@ -95,7 +97,7 @@
 				</div>
 				<div class="col-75">
 					<input type="email" id="email" name="email"
-						value="ram2002@gmail.com" placeholder="Your email.."
+						value="ram002@gmail.com" placeholder="Your email.."
 						pattern="^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 						required>
 				</div>
@@ -119,7 +121,7 @@
 				<div class="col-75">
 					<textarea id="subject" value="raniyammalnagar" required
 						name="address" placeholder="your home parking place address.."
-						style="height: 50px">21,Sumangali school,Swaminathan Street,Guduvancheri</textarea>
+						style="height: 50px">""</textarea>
 				</div>
 			</div>
 
@@ -130,7 +132,7 @@
 				<div class="col-75">
 					<textarea id="sub" name="mapUrl" required
 						value="https://maps.app.goo.gl/kJ7erasDKda9D8LYA"
-						placeholder="location link" style="height: 40px">https://maps.app.goo.gl/orndAzptj1YPPHwf6</textarea>
+						placeholder="location link" style="height: 40px">https://maps.app.goo.gl/orndAzptj1YPPHwf</textarea>
 				</div>
 			</div>
 
@@ -141,6 +143,19 @@
 				<div class="col-75">
 					<input type="password" id="pass" value="Ram@2002" required
 						name="password"
+						title="Password length must be atleast 8, and must contain atleast 1 uppercase, 1 lowercase character and 1 digit"
+						pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-25">
+					<label for="name">Confirm Password</label>
+				</div>
+				<div class="col-75">
+					<input type="password" id="password" value="Ram@2002" required
+						name="cpassword"
+           				title="Password length must be atleast 8, and must contain atleast 1 uppercase, 1 lowercase character and 1 digit"						
 						pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
 				</div>
 			</div>
@@ -154,7 +169,6 @@
 						value="https://iili.io/J9lZkZv.jpg"
 						accept="image/jpeg, image/png, image/jpg"><br>
 
-
 				</div>
 			</div>
 
@@ -166,9 +180,23 @@
 		</form>
 		<script type="text/javascript">
     let form = document.querySelector("form");
+    
+    let password = document.getElementById("pass").value;
+  
+    let confirmPassword = document.getElementById("password").value;
+    
+    
+    
     form.addEventListener("submit", function (e) {
         e.preventDefault();
-        console.log("running");
+       
+        if (password != confirmPassword) {
+        	alert("password and confirmPassword not matched");
+        }
+        else if(password.trim().length == 0){
+        	alert("password is invalid");
+        }
+        else{
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 let latitude = position.coords.latitude;
@@ -185,6 +213,7 @@
         } else {
             alert("Geolocation is not supported by this browser.");
         }
+    }
     });
 </script>
 

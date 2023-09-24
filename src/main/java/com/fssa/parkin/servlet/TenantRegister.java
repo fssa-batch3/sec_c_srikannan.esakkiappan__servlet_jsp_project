@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fssa.parkinplace.exception.DAOException;
+import com.fssa.parkinplace.exception.UserException;
 import com.fssa.parkinplace.model.User;
 import com.fssa.parkinplace.service.UserService;
 
@@ -55,7 +56,7 @@ public class TenantRegister extends HttpServlet {
          // Redirect to the index.jsp page on successful registration
             rd = request.getRequestDispatcher("Tenant-log.jsp");  
            
-        } catch (DAOException e) {
+        } catch (DAOException | UserException e) {
         	
         	System.out.println(e.getMessage());
         	

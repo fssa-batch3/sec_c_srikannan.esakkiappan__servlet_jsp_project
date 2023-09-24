@@ -52,13 +52,13 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		try {
 			userService.updateUser(user);
 			Logger.info("User details is updated sucessfully");
-			User user1 = userService.getUserByEmail(user.getEmail());
+			User user1 = userService.getUserById(user.getUserId());
 			
 			HttpSession session = request.getSession();
 			request.setAttribute("successMsg", "Profile upddated successfully");
 			session.setAttribute("currentuser", user1);
 			
-		} catch (DAOException | UserException e) {
+		} catch (DAOException e) {
 			Logger.info("User details is updation failed");
 
 			request.setAttribute("errorMsg", e.getMessage());

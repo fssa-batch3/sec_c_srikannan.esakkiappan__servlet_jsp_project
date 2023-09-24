@@ -15,9 +15,44 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="assets/css/login-style.css">
+  
+  <link rel="stylesheet" href="assets/css/notify.css">
+
 </head>
 
 <body>
+<script src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js">
+</script>
+
+	<%
+	String success = (String) request.getParameter("success");
+	String error = (String) request.getParameter("error");
+	
+	%>
+
+	<%
+	if (error != null) {
+	%>
+	<script>
+	    let error = "<%=error%>";
+	    Notify.error(error);
+	</script>
+	<%
+	}
+	%>
+
+	<%
+	if (success != null) {
+	%>
+	<script>
+	    	let success = "<%=success%>";
+	    	console.log("<%=success%>");
+			Notify.success("<%=success%>");
+	</script>
+	<%
+	}
+	%>
+	
   <header>
   
     <!-- header -->

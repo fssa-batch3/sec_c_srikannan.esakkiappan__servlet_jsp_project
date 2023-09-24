@@ -15,5 +15,18 @@
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
+    
+    <error-page>
+<!-- 		<exception-type>java.lang.Exception</exception-type> For handling exceptions-->
+		<error-code>404</error-code> <!-- HTTP Error code Page Not found -->
+		<location>/notfounderror.jsp</location>
+	</error-page>
+	
+		
+	<error-page>
+<!-- 		<exception-type>java.lang.Exception</exception-type> For handling exceptions-->
+		<error-code>500</error-code> <!-- HTTP Error code Page Not found -->
+		<location>/notfounderror.jsp</location>
+	</error-page>
   
 </web-app>

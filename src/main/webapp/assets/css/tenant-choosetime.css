@@ -51,27 +51,9 @@ header {
     background-color: #0d131f;
     margin: 10px 0 10px 80px;
 }
-main{
-    margin-top: 200px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 1800px;
-}
-.images{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-left: 100px;
-}
-#heading{
-    font-size: 33px;
-    /* text-align: center; */
-    margin-left: 8%;
-    margin-top: 6%;
-    color: black;
-}
+
+
+
 #parking-image1{
  
     margin-bottom: 20%;
@@ -80,65 +62,7 @@ main{
     margin-top: 6%;
     margin-left: 4%;
 }
-.leaser_detail{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 650px;
-    margin-bottom: 100px;
-    margin-left: 60%;
-    margin-top: -33%;
-    border-top-left-radius: 60px;
-    border: 3px solid #0182ff;
-    background-color: #f2f2f2;
-    color: black;
-}
-#name-number{
-    font-size: 22px;
-    margin-left: 60px;
-    margin-top: -37%;
-}
-form{
-    margin-left: 60px;
-    margin-top: 10%;
-}
-#request-btn{
-    margin-top: 50%;
-    margin-left: 83%;
-}
-#amount{
-    width: 180%;
-    margin-top: -15%;
-}
-button#ques{
-    /* position: absolute;
-    bottom: 16.9%;
-    right: 30.9%; */
-    width: 50%;
-    margin-left: 20%;
-    margin-top: -70%;
-    font-weight: 700;
-}
-.money{
-    margin-left: 85%;
-    margin-top: -10%;
-    transform: scale(1.6);
-}
-h3{
-    font-size: 27px;
-    position: absolute;
-}
-label{
-    font-size: 28px;
-    margin-top: -100%;
-}
-input{
-    height: 30px;
-    width: 200px;
-    border-radius: 10px;
-    margin-top: 1%;
-}
+
 
 button{
     text-decoration: none;

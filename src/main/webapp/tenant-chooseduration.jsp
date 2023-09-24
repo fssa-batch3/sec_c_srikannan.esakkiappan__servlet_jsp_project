@@ -10,6 +10,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;600;800&display=swap"
 	rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/tenant-choosetime.css">
 	<!-- Include jQuery -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<!-- Include Bootstrap CSS and JavaScript -->
@@ -17,7 +18,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="assets/css/tenant-choosetime.css">
+
 <link rel="icon" href="assets/images/Logo.png">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -68,12 +69,15 @@
 		<!-- parking images -->
 		<div class="images">
 			<div id="heading">Parking place Image</div>
+			<br>
 			<div>
 				<img alt="" height="255px" width="430px" id="parking_image1">
 			</div>
 		</div>
+		
 		<!-- Leaser details -->
 		<div class="leaser_detail">
+		
 			 <div id="name-number">
                 <p>Name: <span id="leaser_name"></span></p><br>
                 <p>Phone&nbsp;Number:<span id="leaser_number"></span></p>
@@ -82,8 +86,9 @@
 			<form action="<%=request.getContextPath()%>/BookingPlaceServlet"
 				method="post">
 				<h3>Choose the duration of your parking :</h3>
-				<br> <br> <br> <br> <br> <label
-					for="time-start">start-time</label>&nbsp;&nbsp;&nbsp; <input
+				
+				  <br> <label
+					for="time-start">Start-time</label>&nbsp;&nbsp;&nbsp; <input
 					class="tim" type="text" id="start-time" name="startDate"
 					placeholder="Select your parking time" required><br>
 				<br> <label for="time-end">End-time</label>&nbsp;&nbsp;&nbsp; <input
@@ -92,13 +97,15 @@
 				<br> <br>
 				<!-- request button -->
 				<button id="request-btn">Give Request</button>
-				<input id="leaser-email" type="hidden" name="leaseremail" >
+				<input id="leaser-email" type="hidden" name="leaserid" >
+				<div id="cost">
 				<button id="ques">How much</button>
 				<div class="money">
 					<div id="amount">
 						Rs: <span id="rupee"></span>
 						<input id="parkingcharge" type="hidden" name="parkingcharge">
 					</div>
+				</div>
 				</div>
 			</form>
 
@@ -133,6 +140,95 @@
 </body>
 <script src="https://smtpjs.com/v3/smtp.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<style>
+#heading{
+    font-size: 27px;
+    /* text-align: center; */
+    margin-left: 19%;
+    margin-top: 1%;
+    color: black;
+}
+	main{
+    margin-top: 110px;
+    display: flex;
+    flex-direction: row;
+   	width:100%;
+}
+#name-number{
+    font-size: 20px;
+    margin-left: 60px;
+    margin-top: -8%;
+}
+h3{
+    font-size: 23px;
+}
+.leaser_detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width:500px;
+   	height: 600px;
+    margin-bottom: 100px;
+    margin-left: 15%;
+    margin-top: 10%;
+    border-top-left-radius: 60px;
+    border: 3px solid #0182ff;
+    background-color: #f2f2f2;
+    color: black;
+    font-size: 20px;
+}
+label{
+    font-size: 21px; 
+}
+input{
+    height: 30px;
+    width: 200px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+form{
+    margin-left: 60px;
+    margin-top: 2%;
+    font-size: 20px;
+}
+.images{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10%;
+}
+button#ques{
+    width: 40%;
+    height: 28%;
+    margin-left: 4%;
+    font-size: 16px;
+    font-weight: 400;
+}
+#cost{
+	margin-top:-30%;
+	margin-right: 28%;
+	height: 54%;
+	width: 90%;
+}
+#amount{
+    width: 130%;
+    margin-top: -13%;
+    font-size: 18px;
+}
+#request-btn{
+    margin-top: 10%;
+    margin-left: 63%;
+    height: 24%;
+    font-size: 16px;
+}
+.money{
+    margin-left: 85%;
+    margin-top: -9%;
+    transform: scale(1.6);
+}
+</style>
+
 <script>
 
 $(document).ready(function () {
@@ -147,11 +243,11 @@ $(document).ready(function () {
 
 const url = window.location.search;
 const urlParams = new URLSearchParams(url)
-let email = urlParams.get('tenantemail');
-console.log(email);
+let leaserId = urlParams.get('leaserid');
+console.log(leaserId);
 getUserDetails() ;
 function getUserDetails() {
-	const url = "http://localhost:8080/parkinapp-web/GetLeaserByEmail?tenantemail=" + email;
+	const url = "http://localhost:8080/parkinapp-web/GetLeaserByEmail?leaserid=" + leaserId;
 	axios.get(url)
 	  .then(function (response) {
 	    // handle success
@@ -177,7 +273,7 @@ function getUserDetails() {
     first_name.innerText = user.firstName;
     phon_num.innerText = user.phoneNum;
     parkin_img.setAttribute("src", user.placephotourl );
-    leaser_mail.value = user.email;
+    leaser_mail.value = user.userId;
 	}
 	
 	document.getElementById("ques").addEventListener("click", e => {

@@ -45,7 +45,7 @@
     <h2 id="hedi">Tenant Registration</h2>
   </div>
   <div class="container">
-    <form method="post" action="TenantRegister">
+    <form method="post">
       <div class="row">
         <div class="col-25">
           <label for="fname">Name</label>
@@ -99,7 +99,7 @@
           <label for="name">Confirm Password</label>
         </div>
         <div class="col-75">
-          <input type="password" id="password" name="password"
+          <input type="password" id="password" name="cpassword"
             title="Password length must be atleast 8, and must contain atleast 1 uppercase, 1 lowercase character and 1 digit"
             pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
         </div>
@@ -118,11 +118,38 @@
 
       <div class="row">
 
-        <input id="sig" type="submit" value="sign up">
+        <input type="submit" value="sign up">
       </div>
 
     </form>
     
 </body>
+
+<script type="text/javascript">
+	let form = document.querySelector("form");
+	
+	let password = document.getElementById("pass").value;
+    let confirmPassword = document.getElementById("password").value;
+    
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        console.log("running");
+        if (password != confirmPassword) {
+        	alert("password and confirmPassword not matched");
+        }
+        else if(password.trim().length == 0){
+        	console.log(confirmPassword);
+        	console.log(password);
+        	alert("password is invalid");
+        }
+        else{
+            form.setAttribute("action", "/TenantRegister");
+            
+            form.submit();
+        }
+         
+    });
+
+</script>
 
 </html>

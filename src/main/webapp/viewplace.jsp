@@ -38,7 +38,7 @@
 					for(int i=list.size()-1; i>=0; i-- ){
 						User ele = list.get(i);
 				%>
-				<a href="<%=request.getContextPath() %>/tenant-chooseduration.jsp?tenantemail=<%=ele.getEmail() %>">
+				<a href="<%=request.getContextPath() %>/tenant-chooseduration.jsp?leaserid=<%=ele.getUserId() %>">
 				<div class="profile_box">
 					<div class="image">
 						<img id="imag" src="<%=ele.getPlacephotourl() %>" alt="<%= ele.getFirstName() %>">
@@ -91,7 +91,7 @@
                 }
                 else {
 
-                    element.style.display = "none";
+                    element.style.display = "No data found";
                 }
 
             });

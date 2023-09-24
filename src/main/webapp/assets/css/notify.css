@@ -5,7 +5,7 @@ body {
 #notify,
 .notify {
     position: absolute;
-    top: 16px;
+    top: 120px;
     right: 16px;
     max-width: 400px;
     font-weight: normal;
@@ -26,6 +26,7 @@ body {
     background-color: #03a003;
     color: white;
     margin-bottom: 0.5em;
+    z-index:5;
 }
 
 .notify-error {
