@@ -17,6 +17,11 @@
   <title>Parkin</title>
 </head>
 
+<link rel="stylesheet" href="assets/css/notify.css">
+<script
+	src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js">
+</script>
+
 <body>
   <header>
     <!-- header -->
@@ -41,6 +46,35 @@
       </div>
     </div>
   </header>
+  
+  <%
+	String success = (String) request.getAttribute("success");
+	String error = (String) request.getAttribute("error");
+	
+	%>
+
+	<%
+	if (error != null) {
+	%>
+	<script>
+	    let error = "<%=error%>";
+	    Notify.error(error);
+	</script>
+	<%
+	}
+	%>
+
+	<%
+	if (success != null) {
+	%>
+	<script>
+	    	let success = "<%=success%>";
+			Notify.success(success);
+	</script>
+	<%
+	}
+	%>
+  
   <div id="hed">
     <h2 id="hedi">Tenant Registration</h2>
   </div>
@@ -51,7 +85,7 @@
           <label for="fname">Name</label>
         </div>
         <div class="col-75">
-          <input type="text" id="fname" name="name" placeholder="Your First name.." pattern="[a-zA-Z]+" required>
+          <input type="text" value="suresh" id="fname" name="name" placeholder="Your First name.." pattern="[a-zA-Z]+" required>
         </div>
       </div>
 
@@ -60,7 +94,7 @@
           <label for="email">Email</label>
         </div>
         <div class="col-75">
-          <input type="email" id="email" name="email" placeholder="Your Email" required>
+          <input type="email" id="email" value="suresh@gmail.com" name="email" placeholder="Your Email" required>
         </div>
       </div>
 
@@ -69,7 +103,7 @@
           <label for="name">Phone number</label>
         </div>
         <div class="col-75">
-          <input type="tel" id="numb" name="phone" placeholder="Enter your number" title="please enter a valid phone number" required
+          <input type="tel" id="numb" name="phone" value="9884616020" placeholder="Enter your number" title="please enter a valid phone number" required
             minlength="10" maxlength="10">
         </div>
       </div>
@@ -79,7 +113,7 @@
           <label for="subject">Address</label>
         </div>
         <div class="col-75">
-          <textarea id="subject" name="address" placeholder="Enter your Address.." required></textarea>
+          <textarea id="subject" name="address" placeholder="Enter your Address.." required>raniyammal nagar,taramani</textarea>
         </div>
       </div>
 
@@ -88,7 +122,7 @@
           <label for="name">Password</label>
         </div>
         <div class="col-75">
-          <input type="password" id="pass" name="password"
+          <input type="password" value="Sur@2003" id="pass" name="password"
             title="Password length must be atleast 8, and must contain atleast 1 uppercase, 1 lowercase character and 1 digit"
             pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
         </div>
@@ -99,7 +133,7 @@
           <label for="name">Confirm Password</label>
         </div>
         <div class="col-75">
-          <input type="password" id="password" name="cpassword"
+          <input type="password" value="Sur@2003"  id="password" name="cpassword"
             title="Password length must be atleast 8, and must contain atleast 1 uppercase, 1 lowercase character and 1 digit"
             pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
         </div>
@@ -123,33 +157,25 @@
 
     </form>
     
-</body>
-
 <script type="text/javascript">
-	let form = document.querySelector("form");
-	
-	let password = document.getElementById("pass").value;
-    let confirmPassword = document.getElementById("password").value;
-    
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        console.log("running");
-        if (password != confirmPassword) {
-        	alert("password and confirmPassword not matched");
-        }
-        else if(password.trim().length == 0){
-        	console.log(confirmPassword);
-        	console.log(password);
-        	alert("password is invalid");
-        }
-        else{
-            form.setAttribute("action", "/TenantRegister");
-            
-            form.submit();
-        }
-         
-    });
+  let form = document.querySelector("form");
 
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    let password = document.getElementById("pass").value; // Get the current value of the password field
+    let confirmPassword = document.getElementById("password").value; // Get the current value of the confirmPassword field
+	console.log(password);
+    if (password != confirmPassword) {
+      alert("Password and Confirm Password do not match");
+    } else if (password.trim().length == 0) {
+      alert("Password is invalid");
+    } else {
+      form.setAttribute("action", "<%=request.getContextPath()%>/TenantRegister");
+      form.submit();
+    }
+  });
 </script>
+    
+</body>
 
 </html>

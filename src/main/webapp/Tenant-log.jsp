@@ -16,6 +16,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="assets/css/login-style.css">
 </head>
+ <link rel="stylesheet" href="assets/css/notify.css">
+ <script src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js">
+</script>
 
 <body>
   <header>
@@ -40,6 +43,36 @@
       </div>
     </div>
   </header>
+  
+  <%
+	String success = (String) request.getAttribute("success");
+	String error = (String) request.getAttribute("error");
+	System.out.println(error);
+	%>
+
+	<%
+	if (error != null) {
+	%>
+	<script>
+	    let error = "<%=error%>";
+	    Notify.error(error);
+	</script>
+	<%
+	}
+	%>
+
+	<%
+	if (success != null) {
+	%>
+	<script>
+	    	let success = "<%=success%>";
+	    	console.log("<%=success%>");
+			Notify.success("<%=success%>");
+	</script>
+	<%
+	}
+	%>
+  
   <div id="hd"><br>
     <a href="#" id="bak-hom">Back to Home</a>
   </div>

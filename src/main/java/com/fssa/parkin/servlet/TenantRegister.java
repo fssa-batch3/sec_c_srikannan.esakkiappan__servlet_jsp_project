@@ -13,6 +13,7 @@ import com.fssa.parkinplace.exception.DAOException;
 import com.fssa.parkinplace.exception.UserException;
 import com.fssa.parkinplace.model.User;
 import com.fssa.parkinplace.service.UserService;
+import com.google.protobuf.ServiceException;
 
 /**
  * Servlet implementation class TenantRegister
@@ -63,7 +64,10 @@ public class TenantRegister extends HttpServlet {
         	request.setAttribute("error", e.getMessage());
         	
         	rd = request.getRequestDispatcher("/Tenant-signup.jsp");
-        }
+        } catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         finally {
         	rd.forward(request, response);
         }

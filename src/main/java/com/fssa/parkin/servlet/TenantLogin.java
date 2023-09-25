@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import com.fssa.logger.Logger;
 import com.fssa.parkinplace.dao.UserDao;
 import com.fssa.parkinplace.exception.DAOException;
@@ -46,34 +48,35 @@ public class TenantLogin extends HttpServlet {
 		UserService userService = new UserService(new UserDao(), new UserValidator());
 		RequestDispatcher rd;
 		try {
-			user = userService.Tenantlogin(email, password);
-
+			user = userService.Tenantlogin(email);
+			
 			if (user != null) {
-				HttpSession session = request.getSession();
+				String pwd = user.getPassword();
+				System.out.println(pwd);
+				System.out.println(BCrypt.checkpw(password, pwd));
 				
-				session.setMaxInactiveInterval(1800);
-
-				session.setAttribute("currenttenant", user);
-
-				Logger.info(user.toString());
-				request.setAttribute("successMsg", "Logged in successfully");
-				rd = request.getRequestDispatcher("tenant-profile.jsp");
-
-				Logger.info("logged in successfully");
-
+				if (!BCrypt.checkpw(password, pwd)) {
+					request.setAttribute("error", "Incorrect password");
+					rd = request.getRequestDispatcher("/Tenant-log.jsp");
+					Logger.info("Incorrect password");
+				} else {
+					HttpSession session = request.getSession();
+					session.setAttribute("currenttenant", user);
+					Logger.info(user.toString());
+					request.setAttribute("success", "Logged in successfully");
+					rd = request.getRequestDispatcher("/tenant-profile.jsp");
+					Logger.info("logged in successfully");
+				}
 			} else {
-				request.setAttribute("errorMsg","Incorrect username or password");
-				rd = request.getRequestDispatcher("Tenant-log.jsp");
-
-				Logger.info("Tenant doesn't exist");
-				
-
+				request.setAttribute("error", "User doesn't exist");
+				rd = request.getRequestDispatcher("/Tenant-log.jsp");
+				Logger.info("User doesn't exist");
 			}
+
 		} catch (DAOException | UserException e) {
 
-			request.setAttribute("errorMsg",((Throwable) e).getMessage());
-			rd = request.getRequestDispatcher("Tenant-log.jsp");
-
+			request.setAttribute("error", e.getMessage());
+			rd = request.getRequestDispatcher("/Tenant-log.jsp");
 			Logger.info(((Throwable) e).getMessage());
 			((Throwable) e).printStackTrace();
 

@@ -182,7 +182,6 @@
     let form = document.querySelector("form");
     
     let password = document.getElementById("pass").value;
-  
     let confirmPassword = document.getElementById("password").value;
     
     

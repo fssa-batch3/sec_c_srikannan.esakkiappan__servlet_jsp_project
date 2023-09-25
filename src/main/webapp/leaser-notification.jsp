@@ -229,10 +229,12 @@ function displayDetails(reqDet) {
 	
 	but.addEventListener("click", function() {
 		
-		let id = reqDet[0];
+		let id = reqDet[0].leaserId;
+		
+		let status = reqDet[0].status;
 		
 		  // Define the URL you want to redirect to
-		  const redirectUrl = "http://localhost:8080/parkinapp-web/AcceptBooking?bookingId="+ id; 
+		  const redirectUrl = "http://localhost:8080/parkinapp-web/AcceptBooking?leaserId="+ id + "&status=" + status; 
 		  
 		  // Perform the redirect
 		  window.location.href = redirectUrl;

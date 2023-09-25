@@ -14,6 +14,7 @@ import com.fssa.parkinplace.exception.DAOException;
 import com.fssa.parkinplace.exception.UserException;
 import com.fssa.parkinplace.model.User;
 import com.fssa.parkinplace.service.UserService;
+import com.google.protobuf.ServiceException;
 
 /**
  * Servlet implementation class UserRegister
@@ -37,8 +38,7 @@ public class UserRegister extends HttpServlet {
      * @throws ServletException If there is a servlet-related problem.
      * @throws IOException      If there is an I/O problem.
      * 
-     */
-    
+     */	
    
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -59,6 +59,7 @@ public class UserRegister extends HttpServlet {
         
         // Create a User object with the retrieved data
         User user = new User(name, address, email, phone, password, mapUrl, photoUrl, latitude, longitude);
+        
 
         RequestDispatcher rd = request.getRequestDispatcher("error.jsp");
         
@@ -72,11 +73,13 @@ public class UserRegister extends HttpServlet {
 				 
 			} catch (DAOException | UserException e) {
 				
-				
 				request.setAttribute("error", e.getMessage());
 			
 				 rd = request.getRequestDispatcher("/signup.jsp");
 				 
+				e.printStackTrace();
+			} catch (ServiceException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} finally {
 				
