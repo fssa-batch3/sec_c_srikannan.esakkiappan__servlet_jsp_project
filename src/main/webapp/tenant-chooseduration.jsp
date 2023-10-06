@@ -51,14 +51,14 @@
 		<nav id="nav">
 
 			<!-- Navigation links -->
-			<a href="tenant-choose-place.html">Explore other places</a> <a
+			<a href="/parkinapp-web/ListPlace">Explore other places</a> <a
 				href="index.jsp">Log out</a>
 
 		</nav>
 		<div class="respons_nav">
 			<i class="fa-solid fa-bars" id="bttn"></i>
 			<div class="menu-list">
-				<a href="tenant-choose-place.html">Explore places</a> <a
+				<a href="/parkinapp-web/ListPlace">Explore places</a> <a
 					href="index.html">Log out</a>
 			</div>
 		</div>
@@ -131,7 +131,7 @@
 				</div>
 			</div>
 			<div id="ftnav">
-				<br> <a href="#">Home</a><br> <a href="leaser-log.jsp">Leaser</a><br>
+				<br> <a href="index.jsp">Home</a><br> <a href="leaser-log.jsp">Leaser</a><br>
 				<a href="Tenant-log.jsp">Tenant</a><br> <a href="about.jsp">About</a><br>
 			</div>
 		</div>

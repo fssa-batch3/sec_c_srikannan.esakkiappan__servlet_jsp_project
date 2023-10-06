@@ -67,7 +67,7 @@
 				</div>
 			</div>
 			<div id="ftnav">
-				<br> <a href="#">Home</a><br> <a href="leaser-log.jsp">Leaser</a><br>
+				<br> <a href="index.jsp">Home</a><br> <a href="leaser-log.jsp">Leaser</a><br>
 				<a href="Tenant-log.jsp">Tenant</a><br> <a href="about.jsp">About</a><br>
 			</div>
 		</div>

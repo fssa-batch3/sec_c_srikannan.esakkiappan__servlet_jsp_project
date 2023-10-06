@@ -24,13 +24,13 @@
         </div>
         <nav id="nav">
             <!-- Navigation links -->
-            <a class="Anot_req">Give another request</a>
+            <a class="Anot_req" href="/parkinapp-web/ListPlace">Give another request</a>
             <a href="index.jsp">Log out</a>
         </nav>
         <div class="respons_nav">
             <i class="fa-solid fa-bars" id="bttn"></i>
             <div class="menu-list">
-            <a class="Anot_req">Give new request</a>
+            <a class="Anot_req" href="/parkinapp-web/ListPlace">Give new request</a>
             <a href="index.jsp">Log out</a>
             </div>
           </div>

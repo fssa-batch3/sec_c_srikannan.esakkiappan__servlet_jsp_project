@@ -46,13 +46,18 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		user.setMapurl(request.getParameter("location"));
 		user.setPassword(request.getParameter("password"));
 		user.setPlacephotourl(request.getParameter("image"));
+		String leaserIdString = request.getParameter("leaserid");
+		int leaserId = Integer.parseInt(leaserIdString);
+		user.setId(leaserId);
 		
 		
 		UserService userService=new UserService(new UserDao(),new UserValidator());
 		try {
 			userService.updateUser(user);
 			Logger.info("User details is updated sucessfully");
+			System.out.println(user.getUserId());
 			User user1 = userService.getUserById(user.getUserId());
+			System.out.println(user1);
 			
 			HttpSession session = request.getSession();
 			request.setAttribute("successMsg", "Profile upddated successfully");

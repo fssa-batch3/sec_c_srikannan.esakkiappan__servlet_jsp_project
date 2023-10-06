@@ -27,15 +27,15 @@
             <!-- Navigation links -->
             <a href="/parkinapp-web/ListPlace">Parking places</a>
             <a href="Tenant-edit.jsp" id="edi">Edit profile</a>
-            <a href="tenant-payment.jsp">Payment</a>
+            
             <a href="index.jsp">Log out</a>
         </nav>
         <div class="respons_nav">
             <i class="fa-solid fa-bars" id="bttn"></i>
             <div class="menu-list">
-                <a href="tenant-choose-place.jsp">Parking places</a>
+                <a href="/parkinapp-web/ListPlace">Parking places</a>
                 <a href="Tenant-edit.jsp" id="edi">Edit profile</a>
-                <a href="tenant-payment.jsp">Payment</a>
+                
                 <a href="index.jsp">Log out</a>
             </div>
         </div>

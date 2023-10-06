@@ -44,6 +44,7 @@
     	
     <%
 	User user= (User) session.getAttribute("currentuser");
+    int leaserId = user.getUserId();
 	String displayName = user.getFirstName();
 	String email = user.getEmail();
 	String address = user.getAddress();
@@ -64,6 +65,7 @@
         </div>
         <div class="col-75">
           <input type="text" id="fname" name="name" value="<%=displayName != null ? displayName : ""%>" placeholder="Your name.." >
+          <input id="leaser-email" type="hidden" value="<%=leaserId != 0 ? leaserId : ""%>" name="leaserid" >
         </div>
       </div>
 

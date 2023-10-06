@@ -61,6 +61,7 @@ public class TenantLogin extends HttpServlet {
 					Logger.info("Incorrect password");
 				} else {
 					HttpSession session = request.getSession();
+					session.setMaxInactiveInterval(2400);
 					session.setAttribute("currenttenant", user);
 					Logger.info(user.toString());
 					request.setAttribute("success", "Logged in successfully");
