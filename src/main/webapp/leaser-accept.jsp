@@ -19,7 +19,7 @@
         </div>
         <!-- Navigation links -->
         <nav id="nav">
-            <a href="index.html">Back to Home</a>
+            <a href="index.jsp">Back to Home</a>
         </nav>
     </header>
     <main>

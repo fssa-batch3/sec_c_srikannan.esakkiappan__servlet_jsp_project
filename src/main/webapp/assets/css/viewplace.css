@@ -21,6 +21,12 @@ header{
     background-color: #0d131f;
     margin: 1px 0 10px 20px; 
 }
+#locat{
+    cursor: pointer;
+    margin-left: 60%;
+    height: 35%;
+    width: 70%;
+}
 #nav a{
     text-decoration: none;
     color: white;

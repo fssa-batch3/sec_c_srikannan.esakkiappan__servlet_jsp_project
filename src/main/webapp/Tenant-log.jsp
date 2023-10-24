@@ -90,10 +90,10 @@
       </div>
       <div class="container1">
         <label for="uname"><b>Email</b></label>
-        <input id="email" type="Email" placeholder="Email" name="email" required><br><br>
+        <input id="email" type="Email" value="ganesh@gmail.com" placeholder="Email" name="email" required><br><br>
 
         <label for="psw"><b>Password</b></label>
-        <input id="password_" type="password" required placeholder="Enter Password" name="password"
+        <input id="password_" type="password" required placeholder="Enter Password" name="password" value="Gan@2003"
           pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
           title="Your password must be at least 8 characters long, contain at least one digit or special character, one uppercase letter, and one lowercase letter, and must not contain dots or newline characters."><br>
 
