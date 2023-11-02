@@ -164,8 +164,7 @@ locat.addEventListener("click", function () {
 	    }
 	}
 });
-
-        
+   
         
         function distance(lat1, lon1, lat2, lon2) {
             const R = 6371; // radius of the earth in km

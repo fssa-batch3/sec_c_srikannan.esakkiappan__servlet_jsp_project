@@ -26,8 +26,6 @@
     <nav id="nav">
 
       <!-- Navigation links -->
-      <a href="leaser-profile.jsp" id="save">Save</a>
-      <a href="leaser-log.jsp" id="del">Delete</a>
       <a href="index.jsp">Log out</a>
 
     </nav>
